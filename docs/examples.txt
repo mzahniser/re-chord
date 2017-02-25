@@ -1,0 +1,22 @@
+Example Chord Charts
+(Testing various tricky formatting situations.)
+
+[Em] Hello darkness my old [D]friend,
+[G] I've come to talk with you a[Em]gain,
+
+I'd hammer out [F]love be[C]tween my [F]brothers and my [C]sisters,
+[F][C][G]all []over this[C] land[Em][F].
+
+	[Em] I know we've [A]come a long way,
+	[Em] we're changing [A]day to day,
+	[Em] but tell me,[A] where do the children [D]play?[G][D][G]
+
+[Am]Tell her to reap it in a [G]{War bellows }sickle of [Am]{blazing in scarlet bat-}leather.
+[C]{-talions.} Parsely, [Am]sage, rose[C]ma[D]ry and [Am]{Generals order their soldiers to kill.}thyme.
+And [Am]gather it [C]{ and to }all in a [G]{fight for }bunch [Am]{a }of [G]{cause they've long ago forgotten.}heather.
+[Am]Then she'll [G]be [Am]a [G]true [Am]love [G]of [Am]mine.
+
+	But did he [A]ever return? No, he [D]never returned,
+	and his [A]fate is still un[E]learned.
+	He may [A]ride forever 'neath the [D]streets of Boston;
+	he's the [A]man who [E]never re[A]turned.
