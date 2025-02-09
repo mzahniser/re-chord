@@ -33,7 +33,8 @@ void Line::Parse(const string &line)
 {
 	// Find the first non-whitespace character in this line.
 	size_t pos = 0;
-	while(pos < line.length() && line[pos] <= ' ')
+	// TODO: Handle UTF-8 characters like curly quotes.
+	while(pos < line.length() && line[pos] <= ' ' && line[pos] >= 0)
 		++pos;
 	// If this is an empty line, bail out.
 	if(pos == line.length())
@@ -48,7 +49,9 @@ void Line::Parse(const string &line)
 		// First of all, if there are no blocks in the line yet, add one to
 		// contain this token. Also start a new block if the token is text or
 		// subtext and that line of the current block is already filled in.
-		if(empty() || (type != TextType::TEXT && back().Has(TextType::TEXT)))
+		// TODO: Fix the logic here. Should only chords start a new block?
+		// Would that allow subtext to be placed after text instead of before? (Do I want that?)
+		if(empty() || (type != TextType::TEXT && (back().Has(TextType::TEXT) || back().Has(TextType::SUBTEXT))))
 			emplace_back();
 		
 		// Add this token to the appropriate line of the current block.

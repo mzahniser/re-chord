@@ -21,7 +21,7 @@ void Block::Add(const string &line, TextType type)
 {
 	// If this is the first line in this block of the given type and it starts
 	// with whitespace, this line of the block should be indented.
-	bool indent = (lines[type].empty() && !line.empty() && line.front() <= ' ');
+	bool indent = (lines[type].empty() && !line.empty() && line.front() <= ' ' && line.front() > 0);
 	if(indent)
 		isIndented[type] = true;
 	

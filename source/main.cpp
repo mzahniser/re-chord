@@ -241,6 +241,10 @@ vector<Page> Layout(const vector<Song> &songs, const string &indexLocation, cons
 	else if(indexLocation == "back")
 		pages.insert(pages.end(), index.begin(), index.end());
 	
+	// If there is only one page, don't number it.
+	if(pages.size() <= 1)
+		return pages;
+	
 	// Place all the page numbers. If this is a booklet, the numbers will
 	// alternate right and left sides. Otherwise they're all centered.
 	int side = (layout == "booklet");
