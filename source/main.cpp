@@ -124,8 +124,11 @@ string OutputPath(const Config &config, char **argv)
 	// 2. The last "*.pdf" file in the command line arguments (if any).
 	// 3. The value of "output" in the configuration.
 	// 4. "out.pdf" if no output value was given.
-	bool writeCout = !isatty(fileno(stdout));
+	if(!isatty(fileno(stdout)))
+		return "";
 	string path;
+	string textPath;
+	int textPathCount = 0;
 	
 	// Parse the command line arguments. Anything ending in ".pdf" should be
 	// removed from the arguments, and the last such value is treated as the
@@ -136,23 +139,27 @@ string OutputPath(const Config &config, char **argv)
 		string arg = *it;
 		if(EndsWith(arg, ".pdf"))
 		{
-			if(writeCout)
-				cerr << "Ignoring command line argument \"" << arg << "\"." << endl;
-			else
-			{
-				if(!path.empty())
-					cerr << "Ignoring command line argument \"" << path << "\"." << endl;
-				
-				path = arg;
-			}
+			if(!path.empty())
+				cerr << "Ignoring command line argument \"" << path << "\"." << endl;
+			
+			path = arg;
 		}
 		else
+		{
+			if(EndsWith(arg, ".txt")) {
+				textPath = arg;
+				++textPathCount;
+			}
 			*out++ = *it;
+		}
 	}
+	// Mark the new end of the arguments.
+	*out = nullptr;
 	// If no output file was specified, check if the configuration specifies one
 	// and if not, use the default file name:
-	if(!writeCout && path.empty())
-		path = config.Text("output", "out.pdf");
+	string defaultPath = (textPathCount == 1 ? textPath.substr(0, textPath.size() - 4) + ".pdf" : "out.pdf");
+	if(path.empty())
+		path = config.Text("output", defaultPath);
 	
 	return path;
 }
